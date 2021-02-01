@@ -23,3 +23,5 @@ function gameloop () {
   nut2.move();
 }
 setInterval(gameloop, 1000/60)
+
+//testing git in vscode
