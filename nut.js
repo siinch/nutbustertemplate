@@ -41,4 +41,24 @@ class Nut {
     this.speed.y *= -1;
   }
 
+  collide (other) {
+    let distance = Math.abs(
+      Math.sqrt(
+        Math.pow(this.position.x - other.position.x, 2)
+      + Math.pow(this.position.y - other.position.y, 2)
+      )
+    );
+
+    let threshold = this.radius + other.radius;
+    if(distance <= threshold) {
+      //alert("COLLISION! " +  distance + " " + threshold);
+      let tempx = this.speed.x;
+      let tempy = this.speed.y;
+      this.speed.x = other.speed.x;
+      this.speed.y = other.speed.y;
+      other.speed.x = tempx;
+      other.speed.y = tempy;
+    }
+  }
+
 }

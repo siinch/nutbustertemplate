@@ -8,8 +8,9 @@ canvas.style.border = "5px solid gray";
 canvas = document.body.appendChild(canvas);
 
 // create a new nut object
-let nut1 = new Nut({x: 300, y: 200}, {x: 5, y: 2}, 10, "red");
-let nut2 = new Nut({x: 50, y: 200}, {x: 2, y: 5}, 20, "blue");
+let nut1 = new Nut({x: 300, y: 200}, {x: 5, y: 2}, 50, "red");
+let nut2 = new Nut({x: 50, y: 200}, {x: 2, y: 5}, 50, "blue");
+let nut3 = new Nut({x: 150, y: 250}, {x: 2, y: 5}, 25, "green");
 
 // refresh game 60 times each second
 function gameloop () {
@@ -19,8 +20,13 @@ function gameloop () {
   //draw and move nuts
   nut1.draw();
   nut2.draw();
+  nut3.draw();
   nut1.move();
   nut2.move();
+  nut3.move();
+  nut1.collide(nut2);
+  nut1.collide(nut3);
+  nut2.collide(nut3);
 }
 setInterval(gameloop, 1000/60)
 
